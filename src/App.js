@@ -8,12 +8,12 @@ import './App.css';
 import request from 'superagent';
 
 
-const POKEDEX_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
+const POKEDEX_API = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 
 class App extends Component {
 
   state = {
-    pokemons: creatureData
+    pokemons: []
   }
 
   handleSearch = ({ nameFilter, sortField }) => {
@@ -35,8 +35,10 @@ class App extends Component {
 
 
   async componentDidMount() {
-    const response = await request.get(POKEDEX_API_URL);
-    this.setState({ pokemon: response.body });
+    const response = await request
+      .get(POKEDEX_API);
+    this.setState({ pokemon: response.body.results });
+    console.log({ pokemon: response.body.results });
   }
 
   render() {

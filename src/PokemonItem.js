@@ -3,7 +3,7 @@ import './PokemonItem.css';
 
 class PokemonItem extends Component {
   render() { 
-    const pokemon = this.props.pokemon;
+    const pokemon = this.props;
 
     return (
       <li className="PokemonItem">
