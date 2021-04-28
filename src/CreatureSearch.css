@@ -1,0 +1,8 @@
+.CreatureSearch {
+  background-color: rgba(0,0,0,.1);
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}

@@ -1,0 +1,32 @@
+.CreatureItem {
+  list-style: none;
+  display: grid;
+  grid-template-rows: auto 120px auto;
+  grid-gap: 20px;
+  justify-items: center;
+  background-color: #fff;
+  box-shadow: 0px 1px 3px rgb(0 0 0 / 40%);
+  border-radius: 6px;
+  padding: 20px;
+}
+
+.CreatureItem img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+.CreatureItem p {
+  margin: 0;
+  font-size: .8rem;
+}
+
+.CreatureItem h2 {
+  margin: 0;
+  font-size: 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  width: 100%;
+}
