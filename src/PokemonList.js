@@ -6,6 +6,7 @@ class PokemonList extends Component {
   
   render() { 
     const pokemons = this.props.pokemons;
+    console.log(pokemons);
     return (
       <ul className="PokemonList">
         {pokemons.map(pokemon => (

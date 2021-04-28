@@ -37,8 +37,8 @@ class App extends Component {
   async componentDidMount() {
     const response = await request
       .get(POKEDEX_API);
-    this.setState({ pokemon: response.body.results });
-    console.log({ pokemon: response.body.results });
+    this.setState({ pokemons: response.body.results });
+    console.log(this.state.pokemons);
   }
 
   render() {
