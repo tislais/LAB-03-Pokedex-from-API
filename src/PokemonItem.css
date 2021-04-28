@@ -1,4 +1,4 @@
-.CreatureItem {
+.PokemonItem {
   list-style: none;
   display: grid;
   grid-template-rows: auto 120px auto;
@@ -10,18 +10,18 @@
   padding: 20px;
 }
 
-.CreatureItem img {
+.PokemonItem img {
   height: 100%;
   width: 100%;
   object-fit: contain;
 }
 
-.CreatureItem p {
+.PokemonItem p {
   margin: 0;
   font-size: .8rem;
 }
 
-.CreatureItem h2 {
+.PokemonItem h2 {
   margin: 0;
   font-size: 1rem;
   white-space: nowrap;

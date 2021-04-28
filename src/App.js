@@ -1,16 +1,19 @@
 import React, { Component } from 'react';
 import Header from './Header';
 import Footer from './Footer';
-import CreatureList from './CreatureList';
-import CreatureSearch from './CreatureSearch';
+import PokemonList from './PokemonList';
+import PokemonSearch from './PokemonSearch';
 import creatureData from './creatures';
 import './App.css';
 import request from 'superagent';
 
+
+const POKEDEX_API_URL = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
+
 class App extends Component {
 
   state = {
-    creatures: creatureData
+    pokemons: creatureData
   }
 
   handleSearch = ({ nameFilter, sortField }) => {
@@ -18,8 +21,8 @@ class App extends Component {
     const nameRegex = new RegExp(nameFilter, 'i');
 
     const searchedData = creatureData
-      .filter(creature => {
-        return !nameFilter || creature.title.match(nameRegex);
+      .filter(pokemon => {
+        return !nameFilter || pokemon.title.match(nameRegex);
       })
       .sort((a, b) => {
         if (a[sortField] < b[sortField]) return -1;
@@ -27,25 +30,27 @@ class App extends Component {
         return 0;
       });
 
-    this.setState({ creatures: searchedData });
+    this.setState({ pokemons: searchedData });
   }
 
-  componentDidMount() {
-    console.log('big butts');
+
+  async componentDidMount() {
+    const response = await request.get(POKEDEX_API_URL);
+    this.setState({ pokemon: response.body });
   }
 
   render() {
 
-    const { creatures } = this.state;
+    const { pokemons } = this.state;
 
     return (
       <div className="App">
 
         <Header />
-        <CreatureSearch onSearch={this.handleSearch} />
+        <PokemonSearch onSearch={this.handleSearch} />
 
         <main>
-          <CreatureList creatures={creatures} />
+          <PokemonList pokemons={pokemons} />
         </main>
 
         <Footer />

@@ -1,7 +1,7 @@
 import { Component } from 'react';
-import './CreatureSearch.css';
+import './PokemonSearch.css';
 
-export default class CreatureSearch extends Component {
+export default class PokemonSearch extends Component {
     state = {
       nameFilter: '',
       sortField: ''
@@ -32,7 +32,7 @@ export default class CreatureSearch extends Component {
       const { nameFilter, sortField } = this.state;
 
       return (
-        <form className="CreatureSearch" onSubmit={this.handleSubmit}>
+        <form className="PokemonSearch" onSubmit={this.handleSubmit}>
 
           <input 
             name="nameFilter"
