@@ -5,12 +5,12 @@ import PokemonItem from './PokemonItem';
 class PokemonList extends Component {
   
   render() { 
-    const pokemons = this.props.pokemons;
+    const pokemons = this.props.pokemonProp;
     console.log(pokemons);
     return (
       <ul className="PokemonList">
         {pokemons.map(pokemon => (
-          <PokemonItem key={pokemon.title} pokemon={pokemon} />
+          <PokemonItem key={pokemon.id} pokemonProp={pokemon} />
         ))}
       </ul>
     );

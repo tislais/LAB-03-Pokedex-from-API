@@ -3,13 +3,14 @@ import './PokemonItem.css';
 
 class PokemonItem extends Component {
   render() { 
-    const pokemon = this.props;
+    const { pokemonProp } = this.props;
 
     return (
       <li className="PokemonItem">
-        <h2>{pokemon.pokemon}</h2>
-        <img alt={pokemon.title} src={pokemon.url} />
-        <p>A unicorn and a narwhal nuzzling their horns</p>
+        <h2><a href={pokemonProp.pokedex}>{pokemonProp.pokemon}</a></h2>
+        <img alt={pokemonProp.pokemon} src={pokemonProp.url_image} />
+        <p>Type 1: <span>{pokemonProp.type_1}</span></p>
+        <p>Type 2: <span>{pokemonProp.type_2}</span></p>
       </li>
     );
   }

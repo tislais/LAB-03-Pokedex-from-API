@@ -7,7 +7,13 @@
   display: grid;
   height: 100vh;
   grid-template-rows: auto auto 1fr auto;
-  background-color: #efefef;
+  /* background: rgb(236,130,8);
+  background: linear-gradient(75deg, rgba(236,130,8,1) 0%, rgba(150,217,59,1) 33%, rgba(67,191,217,1) 100%); */
+  /* background: rgb(124,205,121);
+background: linear-gradient(0deg, rgba(124,205,121,1) 0%, rgba(190,255,251,1) 100%); */
+background: rgb(91,173,88);
+background: linear-gradient(0deg, rgba(91,173,88,1) 0%, rgba(151,255,249,1) 100%);
+
 }
 
 .App main {
