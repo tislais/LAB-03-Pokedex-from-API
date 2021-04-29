@@ -1,18 +1,22 @@
 .PokemonItem {
   list-style: none;
-  display: grid;
-  grid-template-rows: auto 120px auto;
-  grid-gap: 10px;
-  justify-items: center;
-  background-color: rgba(255, 255, 255, .8);
+  background-color: rgba(255, 255, 255, .4);
   box-shadow: 0px 2px 3px rgb(0 0 0 / 40%);
   border-radius: 6px;
   padding: 20px;
   transition: all 120ms ease-in-out; 
+  text-decoration: none;
+}
+
+.PokemonItem li {
+  display: grid;
+  grid-template-rows: auto 120px auto;
+  grid-gap: 10px;
+  justify-items: center;
 }
 
 .PokemonItem:hover {
-  transform: scale(1.03);
+  transform: scale(1.02);
   transition: all ease-in-out 120ms;
   background-color: #fff;
 }
@@ -37,9 +41,8 @@
   text-align: center;
   width: 100%;
   text-transform: capitalize;
+  color: #2b737d;
 }
 
-.PokemonItem a {
-  text-decoration: none;
-  color: #2b737d;
+.PokemonItem {
 }

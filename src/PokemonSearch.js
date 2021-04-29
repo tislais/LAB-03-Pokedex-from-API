@@ -46,8 +46,10 @@ export default class PokemonSearch extends Component {
             onChange={this.handleSearchChange}
           >
             <option value="">All</option>
-            <option value="title">By Title</option>
-            <option value="horns">By Horns</option>
+            <option value="pokemon">By Name</option>
+            <option value="attack">By Attack</option>
+            <option value="defense">By Defense</option>
+            <option value="speed">By Speed</option>
           </select>
         
           <button>🔎</button>

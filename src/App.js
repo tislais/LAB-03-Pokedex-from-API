@@ -3,7 +3,6 @@ import Header from './Header';
 import Footer from './Footer';
 import PokemonList from './PokemonList';
 import PokemonSearch from './PokemonSearch';
-import creatureData from './creatures';
 import './App.css';
 import request from 'superagent';
 
@@ -13,13 +12,14 @@ const POKEDEX_API = 'https://pokedex-alchemy.herokuapp.com/api/pokedex';
 class App extends Component {
 
   state = {
-    pokemonData: []
+    pokemonData: [],
+    permPokemonData: []
   }
 
   handleSearch = ({ nameFilter, sortField }) => {
 
     const nameRegex = new RegExp(nameFilter, 'i');
-    const searchedData = this.state.pokemonData
+    const searchedData = this.state.permPokemonData
       .filter(pokemon => {
         return !nameFilter || pokemon.pokemon.match(nameRegex);
       })
@@ -36,7 +36,7 @@ class App extends Component {
   async componentDidMount() {
     const response = await request
       .get(POKEDEX_API);
-    this.setState({ pokemonData: response.body.results });
+    this.setState({ pokemonData: response.body.results, permPokemonData: response.body.results });
   }
 
   render() {
