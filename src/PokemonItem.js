@@ -9,13 +9,13 @@ class PokemonItem extends Component {
     const { pokemonProp } = this.props;
     //const pokemonProp = this.props.pokemonProp; This is the same thing!
 
-    function renderTypes() {
-      if (!pokemonProp.type_2 === 'NA') {
-        return <span>{pokemonProp.type_1} · {pokemonProp.type_2}</span>;
-      } else {
-        return <span>{pokemonProp.type_1}</span>;
-      }
-    }
+    // function renderTypes() {
+    //   if (!pokemonProp.type_2 === 'NA') {
+    //     return <span>{pokemonProp.type_1} · {pokemonProp.type_2}</span>;
+    //   } else {
+    //     return <span>{pokemonProp.type_1}</span>;
+    //   }
+    // }
 
     return (
       <a href={pokemonProp.pokedex} className="PokemonItem">
@@ -25,7 +25,6 @@ class PokemonItem extends Component {
           <div className="PokeTypes">
             <span>{pokemonProp.type_1}</span>
             <span> · {pokemonProp.type_2}</span>
-            <renderTypes />
           </div>
           <div className="PokeHP">Health: <span>{pokemonProp.hp}</span></div>
           <div className="PokeStats">
