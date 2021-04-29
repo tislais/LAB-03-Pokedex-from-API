@@ -1,0 +1,20 @@
+.PokemonSearch {
+  background-color: rgba(0,0,0,.1);
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(0,0,0,.1);
+}
+
+.PokemonSearch input {
+  flex-grow: 2;
+}
+
+.PokemonSearch input,
+.PokemonSearch select,
+.PokemonSearch button {
+  height: 30px;
+  box-sizing: border-box;
+}
