@@ -31,7 +31,8 @@ class PokemonItem extends Component {
             <div>Attack: <span>{pokemonProp.attack}</span></div>
             <div>Special: <span>{pokemonProp.special_attack}</span></div>
             <div>Defense: <span>{pokemonProp.defense}</span></div>
-            <div>Special: <span>{pokemonProp.special_defense}</span></div>
+            {/* <div>Special: <span>{pokemonProp.special_defense}</span></div> */}
+            <div>Speed: <span>{pokemonProp.speed}</span></div>
           </div>
         </li>
       </a>
