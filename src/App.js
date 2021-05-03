@@ -13,29 +13,42 @@ class App extends Component {
 
   state = {
     pokemonData: [],
-    permPokemonData: []
+    permPokemonData: [],
+    pokemonName: '',
+    sortBy: '',
+    sortDirection: 'asc',
+    page: 1
   }
 
-  handleSearch = ({ nameFilter, sortField }) => {
-
-    const nameRegex = new RegExp(nameFilter, 'i');
-    const searchedData = this.state.permPokemonData
-      .filter(pokemon => {
-        return !nameFilter || pokemon.pokemon.match(nameRegex);
-      })
-      .sort((a, b) => {
-        if (a[sortField] < b[sortField]) return -1;
-        if (a[sortField] > b[sortField]) return 1;
-        return 0;
-      });
-
-    this.setState({ pokemonData: searchedData });
+  handleSearch = async ({ nameFilter, sortField, directionField }) => {
+    console.log(directionField);
+    this.setState({ page: 1 });
+    this.setState({ pokemonName: nameFilter, sortBy: sortField, sortDirection: directionField },
+      () => this.fetchPokemon()
+    );
   }
 
+  handlePaging = async change => {
+    const page = this.state.page;
+    const newPage = page + change;
+    this.setState({ page: newPage });
+    const name = this.state.pokemonName;
+
+    const response = await request.get(POKEDEX_API)
+      .query({ pokemon: name })
+      .query({ page: page });
+    this.setState({ pokemonData: response.body.results });
+  }
 
   async componentDidMount() {
+    this.fetchPokemon();
+  }
+
+  async fetchPokemon() {
+    const { pokemonName, sortBy, sortDirection } = this.state;
     const response = await request
-      .get(POKEDEX_API);
+      .get(POKEDEX_API)
+      .query({ pokemon: pokemonName, sort: sortBy, direction: sortDirection });
     this.setState({ pokemonData: response.body.results, permPokemonData: response.body.results });
   }
 
@@ -50,7 +63,10 @@ class App extends Component {
         <PokemonSearch onSearch={this.handleSearch} />
 
         <main>
-          <PokemonList pokemonProp={pokemonData} />
+          <PokemonList 
+            pokemonProp={pokemonData}
+            onPaging={this.handlePaging}
+          />
         </main>
 
         <Footer />

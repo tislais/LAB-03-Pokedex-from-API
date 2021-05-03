@@ -6,7 +6,7 @@ class Header extends Component {
   render() { 
     return (
       <header className="Header">
-        <h1>Pokedex</h1>
+        <h1>Pokemon Directory</h1>
       </header>
     );
   }
