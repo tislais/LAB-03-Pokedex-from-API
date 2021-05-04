@@ -20,24 +20,25 @@ class App extends Component {
     page: 1
   }
 
-  handleSearch = async ({ nameFilter, sortField, directionField }) => {
+  handleSearch = ({ nameFilter, sortField, directionField }) => {
     console.log(directionField);
-    this.setState({ page: 1 });
-    this.setState({ pokemonName: nameFilter, sortBy: sortField, sortDirection: directionField },
+    this.setState({ pokemonName: nameFilter, sortBy: sortField, sortDirection: directionField, page: 1 },
       () => this.fetchPokemon()
     );
   }
 
   handlePaging = async change => {
-    const page = this.state.page;
+    const { page, pokemonName } = this.state;
+    console.log(page, change);
     const newPage = page + change;
     this.setState({ page: newPage });
-    const name = this.state.pokemonName;
 
     const response = await request.get(POKEDEX_API)
-      .query({ pokemon: name })
+      .query({ pokemon: pokemonName })
       .query({ page: page });
-    this.setState({ pokemonData: response.body.results });
+    this.setState({ pokemonData: response.body.results },
+      () => this.fetchPokemon()
+    );
   }
 
   async componentDidMount() {
@@ -45,10 +46,10 @@ class App extends Component {
   }
 
   async fetchPokemon() {
-    const { pokemonName, sortBy, sortDirection } = this.state;
+    const { pokemonName, sortBy, sortDirection, page } = this.state;
     const response = await request
       .get(POKEDEX_API)
-      .query({ pokemon: pokemonName, sort: sortBy, direction: sortDirection });
+      .query({ pokemon: pokemonName, sort: sortBy, direction: sortDirection, page: page });
     this.setState({ pokemonData: response.body.results, permPokemonData: response.body.results });
   }
 
